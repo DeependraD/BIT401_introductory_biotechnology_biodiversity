@@ -1,0 +1,1002 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  ignorenonframetext,
+  aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{AnnArbor}
+\usecolortheme{dolphin}
+\usefonttheme{structuresmallcapsserif}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Genetic Engineering, Gene Cloning and rDNA Technology},
+  pdfauthor={Deependra Dhakal},
+  colorlinks=true,
+  linkcolor=red,
+  filecolor=Maroon,
+  citecolor=blue,
+  urlcolor=red,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{tikz}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+% define new footline defination
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd = .5\paperwidth, ht = 1ex, dp = 1ex, center]{author in head/foot}%
+            Text in footer
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd = .5\paperwidth, ht = 1ex, dp = 1ex, center]{date in head/foot}%
+            \insertframenumber{}
+        \end{beamercolorbox}
+    }%
+    \vskip3pt%
+}
+% add footline defination to the beamer template
+\addtobeamertemplate{footline}{\begin{center}\rule{0.6\paperwidth}{0.4pt}\end{center}\vspace*{-1ex}}{}
+
+% % set titlepage in a TikZ node for modifications
+\setbeamertemplate{title page}{
+\tikz\node[opacity=0.3] {\includegraphics[height=\paperheight,width=\paperwidth]{03-gene_transfer_in_bacteria_bacterial_colony.png}};
+% \tikz\node[opacity=0.8] {\includegraphics[width=5cm,ext=.1-overview_mutation_cover.png,type=png,read=.1-overview_mutation_cover.png]{1}} % if name shall contain dots, suppose filename = 01.1-overview_mutation_cover.png
+\begin{textblock}{15}(1.5,2.8)\usebeamerfont{title} % 1.5 is x position in page
+{\color{white}\raggedright\par\inserttitle}
+\end{textblock}
+\begin{textblock}{7.5}(1.5,7) % 1.5 is x position in page
+{\color{white}\raggedright{\insertauthor}\mbox{}\\[0.2cm]
+\insertdate}
+\end{textblock}} % dd_rookie modified, figure is top aligned
+
+
+% % set caption font size
+% % note that beamer presentation native captions have their own configs
+% \usepackage{caption}
+% \captionsetup{font=footnotesize}
+
+% this font option is amenable for beamer
+\setbeamerfont{caption}{size=\tiny}
+
+% some beamer themes naturally might not support navigation symbols
+% \setbeamertemplate{navigation symbols}{} % remove navigation symbols
+
+\setbeamertemplate{footline}[page number] % insert page number in footline
+
+\title{Genetic Engineering, Gene Cloning and rDNA Technology}
+\author{Deependra Dhakal}
+\date{Academic year 2022-2023}
+\institute{College of Natural Resource Management, Tikapur,
+Kailali \and Agriculture and Forestry University}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}[allowframebreaks]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+\hypertarget{mechanisms-of-gene-transfer-in-bacteria}{%
+\section{Mechanisms of gene transfer in
+Bacteria}\label{mechanisms-of-gene-transfer-in-bacteria}}
+
+\begin{frame}{Features of prokaryotic and eukaryotic cells}
+\protect\hypertarget{features-of-prokaryotic-and-eukaryotic-cells}{}
+\begin{itemize}
+\tightlist
+\item
+  A eukaryotic cell is subdivided by internal membranes into various
+  membrane-enclosed organelles (Figure \ref{fig:eu-prokaryotic-cell}).
+\item
+  In eukaryotic cells, nucleus contains the cell's DNA.
+\item
+  The other organelles are located in the cytoplasm, the entire region
+  between the nucleus and outer membrane of the cell.
+\item
+  The chloroplast is a characterstic organelle found in eukaryotic cells
+  that carry out photosynthesis.
+\item
+  Prokaryotic cells are much simpler and generally smaller than
+  eukaryotic cells.
+\item
+  In a prokaryotic cell, the DNA is not separated from the rest of the
+  cell by enclosure in a membrane-bounded nucleus.
+\item
+  Prokaryotic cells also lack the other kinds of membrane-enclosed
+  organelles.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Features of prokaryotic and eukaryotic cells}
+\protect\hypertarget{features-of-prokaryotic-and-eukaryotic-cells-1}{}
+\begin{columns}[T,onlytextwidth]
+  \column{0.55\textwidth}
+  
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{./../images/eukaryotic_prokaryotic} \caption{Contrasting eukaryotic and prokaryotic cells in size and complexity.}\label{fig:eu-prokaryotic-cell}
+\end{figure}
+
+  \column{0.45\textwidth}
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{./../images/prokaryotic_chr_plasmid} \caption{A prokaryotic chromosome and plasmids. The thin, tangled loops surrounding this ruptured E. coli cell are parts of the cell’s large, circular chromosome (colorized TEM). Three of the cell’s plasmids, the much smaller rings of DNA, are also shown.}\label{fig:prokaryotic-dna}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Transformation: Introduction}
+\protect\hypertarget{transformation-introduction}{}
+\begin{itemize}
+\tightlist
+\item
+  First observed in bacteria and first bacterial system for genetic
+  transfer to be discovered.
+\item
+  Naturally occurs in only certain bacteria, but under laboratory
+  conditions it seems to be possible with any cell type, prokaryotic or
+  eukaryotic.
+\item
+  When a bacterial cell (living or dead) releases some DNA into the
+  surrounding medium, this DNA is, of course, vulnerable to degradation
+  but may encounter another bacterial cell before any significant change
+  can occur.
+\item
+  The second cell may take up the DNA, transport it across the cell wall
+  and cell membrane, and allow it to recombine with the homologous
+  portion of the resident bacterial chromosome.
+\item
+  The resulting recombinant cell is called a \alert{transformant}.
+\item
+  The amount of DNA transferred per event is small, on the order of 10
+  kb in length.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transformation}
+\protect\hypertarget{transformation}{}
+\begin{figure}
+\includegraphics[width=0.28\linewidth]{./../images/bacterial_transformation} \caption{Griffith's discovery of transformation in Streptococcus pneumoniae}\label{fig:transformation-griffith}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Transduction}
+\protect\hypertarget{transduction}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  Bacterial virus (bacteriophage) is intimately involved in the genetic
+  transfer process.
+\item
+  Phage infections begin with adsorption of virus particles to specific
+  receptor sites on the host cell surface. The nucleic acid contained
+  inside the viral protein coat is then transferred to the cytoplasm of
+  the bacterial cell, where it becomes metabolically active and
+  undergoes replication and transcription.
+\item
+  Typically there are two possible outcomes of phage infection.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Lytic response}, the virus produces structural components of
+    new phage particles, packages its nucleic acid inside them, and then
+    causes the cell to lyse and release progeny phage.
+  \item
+    \textbf{Temperate response}, the virus establishes a stable
+    relationship with a host cell (and continues to replicate as a part
+    of host DNA molecule) in which some phage functions are expressed,
+    but not those that lead to uncontrolled DNA replication or the
+    production and assembly of new particles.
+  \end{itemize}
+\item
+  Occasionally \textbf{lysogens} (cells carrying a temperate phage)
+  undergo a metabolic shift that reactivates the viral DNA. The result
+  is the same as for an initial lytic response.
+\item
+  Some phages may give only lytic responses and some only temperate
+  ones; some, however, may give either response, depending on growth
+  conditions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transduction: Responses}
+\protect\hypertarget{transduction-responses}{}
+\begin{figure}
+\includegraphics[width=0.32\linewidth]{./../images/bacteriophage_stages} \caption{The life cycle of bacteriophage $\lambda$. The two intracellular states of bacteriophage lambda: lytic growth and lysogeny. Lambda is smaller than T4; however, its life cycle is more complex. Note, bacteriophage T4 is a lytic phage; when it infects a bacterium, it replicates and kills the host}\label{fig:transduction-bacteriophage}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Transduction: Transducing bacterial cell}
+\protect\hypertarget{transduction-transducing-bacterial-cell}{}
+\begin{itemize}
+\tightlist
+\item
+  During the course of a phage infection of a bacterial cell, some or
+  all of the viral DNA inside an individual virion (virus particle) may
+  be replaced by bacterial DNA (a bacteriophage particle can carry a
+  sequence load of \textasciitilde200 kbp, including its own genome),
+  and this process may occur only rarely or with great frequency.
+\item
+  After such an altered phage particle is released into the medium, it
+  may encounter another bacterial cell and attempt to initiate an
+  infection. In so doing, however, it transfers the DNA fragment from
+  the previous host's chromosome.
+\item
+  If the newly infected cells are not killed and the DNA fragment can
+  either replicate or recombine, the result is the production of
+  \textbf{transductants}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transduction: Generalized and specialized}
+\protect\hypertarget{transduction-generalized-and-specialized}{}
+\begin{itemize}
+\tightlist
+\item
+  During \textbf{generalized transduction} the phage enzyme system that
+  packages viral DNA attaches to the bacterial chromosome and packages
+  some of that DNA instead. The DNA that is packaged is chosen on a more
+  or less random basis, and as a result it is possible for any piece of
+  host genetic information to be transferred.
+\item
+  \textbf{Specialized transduction} involves a temperate phage that has
+  physically integrated its DNA into the bacterial chromosome at a
+  specific site. Such an integrated phage may be stable for long periods
+  of time.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    However, it may reactivate and replicate itself independent of the
+    bacterial chromosome. During the reactivation, some bacterial DNA
+    located adjacent to one end of the viral DNA may be mistakenly
+    excised from the chromosome instead of the appropriate DNA from the
+    other end of the viral genome.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transduction: Generalized}
+\protect\hypertarget{transduction-generalized}{}
+\begin{figure}
+\includegraphics[width=0.25\linewidth]{./../images/transduction_generalized} \caption{Generalized transduction}\label{fig:transduction-gen}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Conjugation}
+\protect\hypertarget{conjugation}{}
+\begin{columns}[T,onlytextwidth]
+  \column{0.65\textwidth}
+  \begin{itemize}
+  \footnotesize
+  \item In yeast the result of conjugation is fusion of haploid cells and formation of a diploid cell type. 
+  \item In a bacterium such as E. coli, instead of cell fusion there is unidirectional transfer of DNA from a donor cell (which carries a conjugative plasmid) to a recipient cell beginning at a definite point on the DNA molecule and proceeding in a linear fashion. The transferred DNA may be all or part of the plasmid and may include a portion of the host DNA as well. 
+  \item By analogy the recombinant bacteria are called transconjugants. 
+  \item The amount of bacterial DNA that can be transferred by conjugation ranges from a few kb to the entire chromosome.
+  \end{itemize}
+  \column{0.35\textwidth}
+
+\begin{figure}
+\includegraphics[width=0.85\linewidth]{./../images/bacterial_conjugation_pilus} \caption{Conjugative transfer of bacterial genetic material}\label{fig:conjugation}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\begin{figure}
+\includegraphics[width=0.6\linewidth]{./../images/bacterial_conjugation2} \caption{Conjugation and recombination in E. coli. The DNA replication that accompanies transfer of an F plasmid or part of an Hfr bacterial chromosome is called rolling circle replication. In effect, the intact circular parental DNA strand “rolls” as its other strand peels off and a new complementary strand is synthesized.}\label{fig:conjugation2}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Protoplast fusion}
+\protect\hypertarget{protoplast-fusion}{}
+\begin{columns}[T,onlytextwidth]
+  \column{0.6\textwidth}
+  \begin{itemize}
+  \footnotesize
+  \item Mostly successful in eukaryotic cells.
+  \item The protoplasts (cells that have been stripped of their walls) must be prepared by various enzymatic or antibiotic treatments. 
+  \item Fusion of cell membranes is aided by a high concentration of polyethylene glycol. 
+  \item The resulting diploid cell usually segregates haploid offspring, many of which show extensive recombination of parental characters.
+  \item The diploid state can be stable over many generations, as evidenced by successful transformation of parental genes whose phenotype was not present in the diploid donor cell.
+  \item Successful fusions have been reported with \textit{Actinoplanes} spp., \textit{Brevibacterium} spp., \textit{Bacillus} spp., \textit{Mycobacterium} spp., \textit{Providencia} spp., \textit{Staphylococcus} spp., and \textit{Streptomyces} spp.
+  \end{itemize}
+  
+  \column{0.4\textwidth}
+  
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{./../images/protoplast_fusion} \caption{Formation of recombinants using protoplast fusion techniques}\label{fig:protoplast-fusion}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Electroporation}
+\protect\hypertarget{electroporation}{}
+\begin{itemize}
+\tightlist
+\item
+  When a high voltage (as much as 2500 V) is passed from a capacitor
+  through a solution containing living cells, significant damage occurs
+  to cell membranes, and many cells die.
+\item
+  Among the survivors, however, are cells that developed small holes
+  (pores) in their cell membranes as a result of the brief passage of
+  current.
+\item
+  These pores are quickly sealed, but while they are open, solutes can
+  pass into or out of the cytoplasm.
+\item
+  Plasmid DNA molecules can also enter a cell if the exterior
+  concentration is sufficiently high.
+\item
+  This technique has been very successful with Gram-negative bacteria
+  and somewhat less successful with Gram-positive bacteria.
+\end{itemize}
+\end{frame}
+
+\hypertarget{genetic-fine-structure}{%
+\section{Genetic fine structure}\label{genetic-fine-structure}}
+
+\begin{frame}{History}
+\protect\hypertarget{history}{}
+\begin{itemize}
+\tightlist
+\item
+  1972, two researchers (Herbert W. Boyer, UCSD and Stanley N. Cohen,
+  Stanford) met at a conference in Hawaii to discuss \emph{plasmids}.
+\item
+  One studied Plasmids
+\item
+  Other studied restriction and modification enzymes (EcoRI)
+\item
+  After talks, ideas combined.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Structure of DNA}
+\protect\hypertarget{structure-of-dna}{}
+\begin{figure}
+\includegraphics[width=0.45\linewidth]{./../images/dna_structure_a} \caption{DNA has two strands antiparallel to each other. The structure of the subcomponents is shown to the sides.}\label{fig:nucleic-acid-dna}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Structure of RNA}
+\protect\hypertarget{structure-of-rna}{}
+\begin{figure}
+\includegraphics[width=0.45\linewidth]{./../images/dna_structure_b} \caption{RNA is usually single-stranded and has two chemical differences from DNA. First, an extra hydroxyl group (-OH) is found at the 2 prime position of ribose, and second, thymine is replaced by uracil.}\label{fig:nucleic-acid-rna}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Genetic engineering: simplified}
+\protect\hypertarget{genetic-engineering-simplified}{}
+\begin{itemize}
+\tightlist
+\item
+  Identification and isolation of the desired gene/DNA fragment to be
+  cloned from different animals, other bacteria, and viruses.
+  Restriction endonucleases are used for producing desired fragments of
+  a given genome.
+\item
+  Insertion of the gene/DNA segment in a vector; plasmid, virus, cosmid,
+  etc.
+\item
+  Introduction of the recombinant vector into a suitable host
+  (transformation).
+\item
+  Integration of the desired gene into the nuclear/organeller genome of
+  the host cell.
+\item
+  Selection of the transformed host cells.
+\item
+  Expression of the cloned genes.
+\item
+  Regeneration of the cloned genes.
+\item
+  Transmission to the progenies.
+\end{itemize}
+\end{frame}
+
+\hypertarget{dna-isolation-and-purification}{%
+\section{DNA isolation and
+purification}\label{dna-isolation-and-purification}}
+
+\begin{frame}{Isolation}
+\protect\hypertarget{isolation}{}
+\begin{enumerate}
+\tightlist
+\item
+  Destruction of cell membrane. (Lysozyme digestion of peptidoglycan in
+  bacteria)
+\item
+  Bursting of cell membrane by destruction of lipid bilayer (by
+  detergent such as sodium dodecyl sulfate (SDS)). In plants and
+  animals, tissue samples are generally ground up to release the
+  intracellular components.
+\item
+  Separation of intracellular components from the insoluble remains
+  (cellular membranes, bones, cartilage, etc.) by either centrifugation
+  or chemical extraction.
+\item
+  Extraction of unwanted proteins from DNA with phenol (Dissolves
+  60\%-70\% of all living matter).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Purification}
+\protect\hypertarget{purification}{}
+\begin{itemize}
+\tightlist
+\item
+  The two phases (one that of proteins dissolved in phenol and the other
+  of nucleic acids in the aqueous layer) are separated by
+  centrifugation, and the aqueous DNA layer is removed form the phenol
+\item
+  Use enzyme ribonuclease (RNase) to digests RNA into small
+  ribonucleotide fragments
+\item
+  Treat this solution with alcohol to precipitate large DNA out of the
+  aqueous phase, while ribonucleotides stay soluble, thus favoring
+  centrifugation extraction of DNA
+\end{itemize}
+\end{frame}
+
+\hypertarget{dna-fragment-separation-using-electrophoresis}{%
+\section{DNA fragment separation using
+Electrophoresis}\label{dna-fragment-separation-using-electrophoresis}}
+
+\begin{frame}{Initial preparation}
+\protect\hypertarget{initial-preparation}{}
+\begin{itemize}
+\tightlist
+\item
+  Gel electrophoresis is used to separate DNA fragments by size
+\item
+  Gel consists of agarose, a polysaccharide extracted from seaweed that
+  behaves like gelatin (commercial powder).
+\item
+  For visualizing DNA agarose gel is solidified, after subsequent
+  cooling once the powder-water mixture is heated, into a rectangular
+  slab about 1/4 inch thick by casting the molten liquid into a special
+  tray.
+\item
+  To make small wells or holes at one end of the gel, comb is inserted
+  before the gel hardens.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Process}
+\protect\hypertarget{process}{}
+Gel electrophoresis uses electric current to separate DNA molecules by
+size. The agarose slab is immersed in a buffer-filled tank that has a
+positive electrode at one end and a negative electrode at the other. DNA
+samples are loaded into the wells, and when an electrical field is
+applied, the DNA migrates through the gel. The phosphate backbone of DNA
+is negatively charged, so it moves away from the negative electrode and
+toward the positive electrode. Polymerized agarose acts as a sieve with
+small holes between the tangled chains of agarose. The DNA must migrate
+through these gaps. Agarose separates the DNA by size because larger
+pieces of DNA are slowed down more by the agarose.
+\end{frame}
+
+\begin{frame}{Visualization}
+\protect\hypertarget{visualization}{}
+\begin{itemize}
+\tightlist
+\item
+  The agarose gel is removed from the tank and immersed into a solution
+  of ethidium bromide (mutagenic).
+\item
+  This dye intercalates between the bases of DNA or RNA, although less
+  dye binds to RNA because it is single-stranded. When the gel is
+  exposed to ultraviolet light, it fluoresces bright orange.
+\item
+  In Figure \ref{fig:gel-electrophoresis}, the DNA fragments are
+  visualized by a positively charged dye from the thiazin family. The
+  dye interacts with the negatively charged backbone of the DNA and is a
+  nontoxic alternative that does not require ultraviolet light sources.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Electrophoresis apparatus and visualization}
+\protect\hypertarget{electrophoresis-apparatus-and-visualization}{}
+\begin{figure}
+\includegraphics[width=0.45\linewidth]{./../images/electrophoresis} \caption{(A) Photo of electrophoresis supplies. Electrophoresis chamber holds an agarose gel in the center portion, and the rest of the tank is filled with buffer solution. The red and black leads are then attached to an electrical source. FisherBiotech Horizontal Electrophoresis Systems, Midigel System; Standard; 13 $\times$ 16-cm gel size; 800 mL buffer volume; Model No. FB-SB-1316. (B) Agarose gel separation of DNA. The size of the fragments can be calculated by comparing them to the standard DNA marker in lane 1. The brighter bands in the marker are 1000 base pairs and 500 base pairs, with the 1000 base-pair marker closer to the wells (marked with numbers 1–8).}\label{fig:gel-electrophoresis}
+\end{figure}
+\end{frame}
+
+\hypertarget{dna-modification}{%
+\section{DNA modification}\label{dna-modification}}
+
+\begin{frame}{DNA cutters: Restriction enzymes}
+\protect\hypertarget{dna-cutters-restriction-enzymes}{}
+\begin{itemize}
+\tightlist
+\item
+  DNA should be cut to fragments of different sizes because entire set
+  of nuclear DNA is not of particular interest in visualization
+\item
+  Naturally occuring \emph{restriction enzymes} or \emph{restriction
+  endonucleases} come into rescue in this operation.
+\item
+  These bacterial enzymes bind to specific recognition sites on DNA and
+  cut the backbone of both strands.
+\item
+  These enzymes are methylation sensitive.
+\item
+  Bacteria produce \emph{modification enzymes} that recognize the same
+  sequence as the corresponding restriction enzyme. These methylate each
+  recognition site in the bacterial genome.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DNA cutters: Restriction enzymes}
+\protect\hypertarget{dna-cutters-restriction-enzymes-1}{}
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./../images/restriction_enzymes} \caption{\textbf{Type II Restriction Enzymes -- Blunt versus Sticky ends} \newline \textit{Hpal} is a bunt-end restriction enzyme; that is, it cuts both strands of DNA in exactly the same position.    extit{EcoR}I is a sticky-end restriction enzyme. The enzyme cuts between the G and A on both strands, which generates four base-pair overhangs on the ends of the DNA. Since these ends may base pair with complementary sequences, they are considered 'sticky'.}\label{fig:restriction-enzymes}
+\end{figure}
+\end{frame}
+
+\begin{frame}{DNA cutters: Restriction enzymes}
+\protect\hypertarget{dna-cutters-restriction-enzymes-2}{}
+\footnotesize
+
+\begin{itemize}
+\item
+  Restriction enzymes have been exploited to cut DNA at specific sites,
+  since each restriction enzyme has a particular recognition sequence.
+  Difference in cleavage site determine the type of restriction enzyme.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Type I restriction enzymes cut the DNA strand 1000 or more base
+    pairs from the recognition sequence.
+  \item
+    Type II restriction enzymes cut in the middle of the recognition
+    sequence and are the most useful in genetic engineering. The Type II
+    restriction enzymes can form \emph{both} sticky or \emph{blunt}
+    ends.
+  \end{itemize}
+\item
+  The recognition sequences of Type II restriction enzymes are usually
+  inverted repeats so that the enzymes cut between the same bases on the
+  both strands.
+\item
+  The number of base pairs in the recognition sequence determines the
+  likelihood of cutting.
+\item
+  So to generate fewer, longer fragments, restriction enzymes with six
+  or more base-pair recognition sequences are used.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DNA cutters: Restriction enzymes}
+\protect\hypertarget{dna-cutters-restriction-enzymes-3}{}
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./../images/restriction_enzymes_ex} \caption{Common restriction enzymes}\label{fig:restriction-enzymes-ex}
+\end{figure}
+\end{frame}
+
+\begin{frame}{DNA joiners: Ligase}
+\protect\hypertarget{dna-joiners-ligase}{}
+\begin{itemize}
+\tightlist
+\item
+  When two different DNA samples are cut with the same sticky-end
+  restriction enzyme, all fragments will have identical overhangs.
+\item
+  This allows DNA fragments from two sources (e.g., two different
+  organisms) to be linked together (Figure
+  \ref{fig:restriction-ligation}).
+\item
+  Fragments are linked or ligated using DNA ligase
+\item
+  The efficiency of ligases depends on the total concentration of the
+  substrates and also on the closeness of the ends to be ligated.
+\item
+  There are 3 kinds of mammalian DNA ligases.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Joining of Okazaki fragments and sealing of excision repair nicks,
+    repair of double-strand breaks and nonhomologous end joining,
+    joining of recombining plasmid vectors.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\begin{figure}
+\includegraphics[width=0.2\linewidth]{./../images/restriction_ligation} \caption{\textbf{Compatible overhangs are linked using DNA Ligase}\newline BamHI and Bgl Il generate the same overhanging or sticky ends: a $3^\prime$-CTAG-$5^\prime$ overhang plus a $5^\prime$-GATC-$3^\prime$ overhang. These are complementary and base pair by hydrogen bonding. The breaks in the DNA backbones are sealed by T4 DNA ligase, which hydrolyzes ATP to energize the reaction.}\label{fig:restriction-ligation}
+\end{figure}
+\end{frame}
+
+\hypertarget{dna-detection}{%
+\section{DNA detection}\label{dna-detection}}
+
+\begin{frame}{Background}
+\protect\hypertarget{background}{}
+\begin{itemize}
+\tightlist
+\item
+  In 1969, Mary Lou Pardue and Joseph Gall developed a procedure by
+  which they could hybridize radioactive single strands of DNA with
+  complementary strands of DNA in chromosomes on glass slides.
+\item
+  This procedure, called in situ hybridization, Pardue and Gall were
+  able to determine the chromosomal locations of repetitive DNA
+  sequences.
+\item
+  Classical in situ hybridization involved spreading mitotic chromosomes
+  on a glass slide, denaturing the DNA in the chromosomes by exposure to
+  alkali (0.07 N NaOH) for a few minutes, rinsing with buffer to remove
+  the alkaline solution, incubating the slide in hybridization solution
+  containing radioactive copies of the nucleotide sequence of interest,
+  washing off the radioactive strands that have not hybridized with
+  complementary sequences in the chromosomes, exposing the slide to a
+  photographic emulsion that is sensitive to low-energy radioactivity,
+  developing the autoradiograph, and superimposing the autoradiograph on
+  a photograph of the chromosomes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{In situ hybridization}
+\protect\hypertarget{in-situ-hybridization}{}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{./../images/insitu_hybrid_steps} \caption{Steps in in-situ hybridization}\label{fig:insitu-hybridization}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Fluorescent In Situ Hybridization}
+\protect\hypertarget{fluorescent-in-situ-hybridization}{}
+\begin{itemize}
+\tightlist
+\item
+  A repetitive DNA sequence can be identified as satellite DNA
+  (generally non-transcribing) only if the sequence has a base
+  composition sufficiently different from that of main-band DNA to
+  produce a distinct band during density-gradient centrifugation.
+  Therefore, centrifugation cannot be used to identify all repetitive
+  DNA sequences.
+\item
+  Today, in situ hybridization experiments are often done by using
+  hybridization probes that are linked to fluorescent dyes or antibodies
+  tagged with fluorescent compounds (Figure
+  \ref{fig:fish-hybridization1}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fluorescent In Situ Hybridization}
+\protect\hypertarget{fluorescent-in-situ-hybridization-1}{}
+\begin{itemize}
+\tightlist
+\item
+  In one protocol, DNA or RNA hybridization probes are linked to the
+  vitamin biotin, which is bound with high affinity by the egg protein
+  avidin (Figure \ref{fig:fish-hybridization1}).
+\item
+  By using avidin covalently linked to a fluorescent dye, the
+  chromosomal location of the hybridized probe can be detected by the
+  fluorescence of the dye.
+\item
+  This procedure, called FISH (Fluorescent In Situ Hybridization), has
+  been used to demonstrate the presence of the repetitive sequence
+  TTAGGG in the telomeres of human chromosomes (Figure
+  \ref{fig:fish-hybridization2}).
+\item
+  The FISH procedure is very sensitive and can be used to detect the
+  locations of single-copy sequences in human mitotic and interphase
+  chromosomes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{FISH: Procedure}
+\protect\hypertarget{fish-procedure}{}
+\begin{columns}[T,onlytextwidth]
+  \column{0.5\textwidth}
+
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{./../images/fish_hybridization1} \caption{Localization of repeated DNA sequences in chromosomes by in situ hybridization performed with fluorescent probes}\label{fig:fish-hybridization1}
+\end{figure}
+
+  \column{0.5\textwidth}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./../images/fish_hybridization2} \caption{The use of fluorescent dyes to localize the TTAGGG repeat sequence to the telomeres of human chromosomes and a photomicrograph demonstrating its telomeric location is shown in.}\label{fig:fish-hybridization2}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\hypertarget{gene-cloning-meaning-and-methods}{%
+\section{Gene cloning: Meaning and
+methods}\label{gene-cloning-meaning-and-methods}}
+
+\begin{frame}{Gene cloning}
+\protect\hypertarget{gene-cloning}{}
+\begin{itemize}
+\tightlist
+\item
+  After isolation and detailed characterization of the DNA molecule to
+  be transferred, cloning vector (by which gene to be transferred enters
+  a suitable recipient) is constructed.
+\item
+  The recepient is usually a bacterial host, where the gene is
+  incorporated and replicated, producing ``clones''.
+\item
+  Cloning vectors are generally derivatives of bacterial resistance
+  plasmids (R plasmids)
+\item
+  Host lines are weakened/attenuated strains of bacterial -- mainly
+  \emph{E. coli} -- which cannot grow outside the laboratory because of
+  induced mutations (auxotrophic strains).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\begin{figure}
+\includegraphics[width=0.4\linewidth]{../images/DNA_cloning} \caption{Principles in cloning a desired DNA by using a plasmid vector. The circular, dsDNA of the plasmid is hydrolyzed by using a restriction endonuclease; the same enzyme is used to obtain the DNA fragments (restriction fragments) to be cloned. Short, phosphorylated nucleotide extensions are formed at the 5' ends. The opened (linearized) plasmid vector is dephosphorylated, and the 5'-phosphate groups are left on the restriction fragment. Upon mixing of the linearized vector and restriction fragment, base pairing (annealing) occurs between the plasmid vector and the fragment. In the presence of the enzyme DNA ligase and the absence of water, the phosphate groups and the neighboring 3'-OH groups join (ligation), by phosphodiester bonds.}\label{fig:dna-cloning}
+\end{figure}
+\end{frame}
+
+\hypertarget{polymerase-chain-reaction-meaning-and-procedure}{%
+\section{Polymerase Chain Reaction: Meaning and
+procedure}\label{polymerase-chain-reaction-meaning-and-procedure}}
+
+\begin{frame}{Overview of PCR}
+\protect\hypertarget{overview-of-pcr}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  An in vitro technique that enables DNA fragments to be copied in a
+  process that is referred to as \emph{amplification}.
+\item
+  Usefulness is because sufficient DNA can be generated to characterize
+  and analyze it.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Detection of pathogenic microorganisms ( \emph{H. pylori},
+    tuberculosis, chlamydia, viral meningitis, viral hepatitis, AIDs,
+    etc.)
+  \item
+    Disease epidemiology and forcasting.
+  \item
+    Crime detection and forensic application.
+  \item
+    Crop variety characterization by DNA fingerprinting.
+  \end{itemize}
+\item
+  \alert{DNA Polymerase} from the thermophilic bacterium \emph{Thermus
+  aquaticus} resolved issues of specificity and speed.
+\item
+  \emph{T. aquaticus} (abbreviated \emph{Taq}) is found in hotsprings
+  and grows at \(75^\circ\)C. Its enzyme has an optimum temperature of
+  \(72^\circ\)C and is sufficiently stable at \(96^\circ\)C so that
+  fresh Taq enzyme does not need to be added after each cycle.
+\item
+  \emph{Taq} polymerase allows primer annealing and extension to be
+  carried out at temperatures significantly higher than those for E.
+  coli polymerase. This reduces imperfect annealing and subsequent
+  amplification of an imperfect (nonspecific) product.
+\item
+  This enabled researchers to design and build automated PCR machines,
+  and thereby accelerated the rapid application of this technology.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{PCR procedure}
+\protect\hypertarget{pcr-procedure}{}
+\begin{itemize}
+\tightlist
+\item
+  Denaturing of the target sequence so that the polynucleotide is in a
+  single stranded, unwound form. For DNA, this requires a temperature of
+  \(94-96^\circ\) C for 5 min.
+\item
+  Hybridization so that the primers bind to complementary bases that
+  flank the regions on either side of the polynucleotide of interest.
+  This step requires about 30 s and is carried out at \(30-65^\circ\).
+\item
+  Polymerization (i.e., polynucleotide or DNA synthesis) by DNA
+  polymerase. The enzyme reads the template strand between the flanking
+  primers, and matches the bases with complementary ribonucleotides,
+  which are then incorporated into the primer strand. This is carried
+  out at \(72-80^\circ\)C for several minutes at pH = 8.4 in Tris buffer
+  containing ribonucleotides representing all 4 bases (A, G, C, T).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\begin{figure}
+\includegraphics[width=0.34\linewidth]{./../images/pcr_steps} \caption{Graphical representation of amplifying a target DNA sequence through the polymerase chain reaction (PCR) [reproduced from Brown (2006), Fig. 9.2] .}\label{fig:pcr-steps}
+\end{figure}
+\end{frame}
+
+\begin{frame}{PCR: Classic protocol}
+\protect\hypertarget{pcr-classic-protocol}{}
+\begin{block}{Watson et al. ( 1992, p. 8) state:}
+The standard PCR is typically done in a 50 - or 100 $\mu l$ volume and, in addition to the sample DNA, contains 50 mM KCl, 10 mM Tris/HCl (pH 8.4 at room temp.), 1.5 mM MgCl 2, 100 $\mu$g/ml gelatin, 0.25 $\mu$M of each primer, 200 $\mu$M of each deoxynucleotide triphosphate (dATP, dCTP, dGTP, and dTTP), and 2.5 units of Taq polymerase. The type of the DNA sample will be variable but it will usually have between $10^2$ to $10^5$ copies of the template (e.g., 0.1 $\mu$g DNA). A few drops of mineral oil are often added to seal the reaction and prevent condensation ... The amplification can be conveniently performed in a DNA Thermal Cycler (Perkin -Elmer Instruments) using the “Step-Cycle” program set to denature at $94^\circ$C for 20 sec, anneal at $55^\circ$C for 20 sec, and extend at  $72^\circ$C for 30 sec for a total of 30 cycles. (The “Step-Cycle” program causes the instrument to heat and cool to the target temperatures as quickly as possible. In the current instrument, this results in a heating rate of about  $0.3^\circ$C per sec and a cooling rate of about  $1^\circ$C per sec, for an overall single cycle time of approximately 3.75 min).
+\end{block}
+\end{frame}
+
+\begin{frame}{PCR: Detailed methodology}
+\protect\hypertarget{pcr-detailed-methodology}{}
+\begin{itemize}
+\tightlist
+\item
+  A sequence of a small stretch of nucleotides on either side of the
+  target must be known, these flanking sequences are then used to
+  specify and synthesize single-stranded oligonucleotide fragments, or
+  primers (\textasciitilde20 bp).
+\item
+  A mixture of the template sequence (primers), Taq polymerase,
+  triphosphorylated deoxyribonucleotides, and buffer then doubles the
+  amount of DNA each cycle.
+\item
+  The amount of DNA is doubled during each cycle, with n cycles
+  producing \(2^n\) as present to begin with.
+\item
+  Rate of misincorporation: 1 base out of 10,000 - 1 base out of 200,000
+  per PCR cycle.
+\item
+  This limitation was overcome for sequencing long fragments of genomic
+  DNA through use of in vivo DNA amplification using yeast or BACs.
+\end{itemize}
+\end{frame}
+
+\hypertarget{restriction-fragment-length-polymorphism}{%
+\section{Restriction Fragment Length
+Polymorphism}\label{restriction-fragment-length-polymorphism}}
+
+\begin{frame}{RFLP fingerprinting: Steps}
+\protect\hypertarget{rflp-fingerprinting-steps}{}
+\begin{itemize}
+\tightlist
+\item
+  The DNA is cut with a restriction enzyme.
+\item
+  The DNA fragments are separated by length or molecular weight by gel
+  electrophoresis.
+\item
+  The fragments are visualized by Southern blotting. The separated
+  fragments are transferred from the gel to nylon paper. Then a
+  radioactively labeled DNA probe is added.
+\item
+  The probe binds to those DNA fragments with complementary sequences.
+\item
+  The blot is covered with radiation-sensitive film to give an
+  autoradiograph. This shows the location of those DNA fragments that
+  reacted with the radioactive probe.
+\item
+  The final product of a DNA fingerprint is an autoradiograph that
+  contains at least five essential lanes (Figure
+  \ref{fig:fingerprint-lanes}). The markers are standardized DNA
+  fragments of known size, which have been radioactively labeled.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+\begin{figure}
+\includegraphics[width=0.3\linewidth]{../images/rflp_fingerprinting} \caption{Outline of RFLP based DNA fingerprinting}\label{fig:rflp-fingerprinting}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
+\begin{figure}
+\includegraphics[width=0.4\linewidth]{../images/fingerprint_lanes} \caption{Actual DNA fingerprint showing that the pattern of DNA fragments of the victim (V) were found on the defendant's clothing (jeans/shirt). The first two and last two lanes are the standard size markers (labeled $\lambda$ and 1 kb). The lane marked TS is a positive control showing that the fingerprint technique was successful. The lane marked D is the defendant's DNA pattern.}\label{fig:fingerprint-lanes}
+\end{figure}
+\end{frame}
+
+\hypertarget{bibliography}{%
+\section{Bibliography}\label{bibliography}}
+
+\begin{frame}{References}
+\protect\hypertarget{references}{}
+\end{frame}
+
+\end{document}
